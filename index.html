@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="DESCAR — Oficina automóvel. Manutenção, diagnóstico, distribuição, suspensão, travagem e estética automotiva.">
+  <title>DESCAR | Oficina Automóvel</title>
+  <style>
+    :root{
+      --black:#0b0b0b;
+      --dark:#121212;
+      --yellow:#dfff00;
+      --white:#f5f5f2;
+      --gray:#a8a8a8;
+      --card:#191919;
+      --line:#292929;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Arial,Helvetica,sans-serif;
+      background:var(--black);
+      color:var(--white);
+      line-height:1.5;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1120px,92%);margin:auto}
+    header{
+      position:sticky;top:0;z-index:20;
+      background:rgba(11,11,11,.94);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      min-height:76px;display:flex;align-items:center;justify-content:space-between;
+      gap:24px;
+    }
+    .logo{
+      font-size:2rem;font-weight:900;letter-spacing:.08em;
+    }
+    .logo span{color:var(--yellow)}
+    nav{display:flex;gap:24px;align-items:center}
+    nav a{font-size:.92rem;color:#ddd}
+    nav a:hover{color:var(--yellow)}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:13px 20px;border-radius:4px;font-weight:800;
+      background:var(--yellow);color:#080808;
+      transition:.2s;
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn.dark{background:transparent;color:var(--white);border:1px solid #555}
+    .hero{
+      min-height:78vh;display:flex;align-items:center;
+      background:
+        radial-gradient(circle at 75% 35%,rgba(223,255,0,.12),transparent 28%),
+        linear-gradient(135deg,#0b0b0b 0%,#151515 100%);
+      position:relative;overflow:hidden;
+    }
+    .hero:after{
+      content:"";position:absolute;width:420px;height:420px;border:1px solid rgba(223,255,0,.12);
+      border-radius:50%;right:-130px;bottom:-170px;
+    }
+    .hero-content{max-width:760px;padding:90px 0}
+    .eyebrow{
+      color:var(--yellow);font-size:.82rem;font-weight:800;letter-spacing:.18em;
+      text-transform:uppercase;margin-bottom:18px;
+    }
+    h1{font-size:clamp(3.5rem,9vw,7.5rem);line-height:.88;letter-spacing:-.06em}
+    h1 span{color:var(--yellow)}
+    .hero p{max-width:650px;color:#c6c6c6;font-size:1.15rem;margin:28px 0 34px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
+    section{padding:90px 0}
+    .section-head{margin-bottom:42px}
+    .section-head .eyebrow{margin-bottom:8px}
+    h2{font-size:clamp(2rem,5vw,3.4rem);line-height:1}
+    .intro{color:var(--gray);max-width:680px;margin-top:14px}
+    .services{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
+    }
+    .card{
+      background:var(--card);border:1px solid var(--line);
+      padding:28px;min-height:190px;
+      transition:.2s;
+    }
+    .card:hover{border-color:var(--yellow);transform:translateY(-3px)}
+    .icon{font-size:1.7rem;color:var(--yellow);margin-bottom:24px}
+    .card h3{font-size:1.2rem;margin-bottom:9px}
+    .card p{color:var(--gray);font-size:.95rem}
+    .detailing{
+      background:var(--yellow);color:#090909;
+      padding:55px;border-radius:3px;
+      display:flex;align-items:center;justify-content:space-between;gap:35px;
+    }
+    .detailing .eyebrow{color:#111}
+    .detailing h2{max-width:650px}
+    .detailing p{max-width:620px;margin-top:14px}
+    .detailing .btn{background:#090909;color:var(--yellow)}
+    .about{
+      display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+    }
+    .about-box{
+      min-height:320px;border:1px solid var(--line);
+      background:linear-gradient(145deg,#171717,#0e0e0e);
+      display:flex;align-items:flex-end;padding:30px;
+    }
+    .about-box strong{font-size:5rem;line-height:.8;color:var(--yellow);opacity:.9}
+    .contact{
+      display:grid;grid-template-columns:1fr 1fr;gap:16px;
+    }
+    .contact-card{
+      background:var(--card);border:1px solid var(--line);padding:30px;
+    }
+    .contact-card h3{margin-bottom:10px}
+    .contact-card p{color:var(--gray)}
+    footer{
+      border-top:1px solid var(--line);padding:30px 0;color:#888;font-size:.85rem;
+    }
+    .mobile-menu{display:none}
+    @media(max-width:800px){
+      nav{display:none}
+      .mobile-menu{display:inline-flex}
+      .services{grid-template-columns:1fr 1fr}
+      .about,.contact{grid-template-columns:1fr}
+      .detailing{padding:35px;flex-direction:column;align-items:flex-start}
+    }
+    @media(max-width:560px){
+      .services{grid-template-columns:1fr}
+      section{padding:65px 0}
+      .hero-content{padding:70px 0}
+      h1{font-size:4.2rem}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="logo" href="#inicio">DES<span>CAR</span></a>
+    <nav>
+      <a href="#servicos">Serviços</a>
+      <a href="#detailing">Detailing</a>
+      <a href="#sobre">Sobre nós</a>
+      <a href="#contactos">Contactos</a>
+    </nav>
+    <a class="btn mobile-menu" href="#contactos">Contactar</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="container hero-content">
+      <div class="eyebrow">Oficina Automóvel</div>
+      <h1>O seu carro.<br><span>O nosso cuidado.</span></h1>
+      <p>
+        Manutenção, diagnóstico e reparação automóvel com atenção ao detalhe.
+        E, quando o trabalho mecânico termina, o cuidado continua com a DESCAR Detailing.
+      </p>
+      <div class="actions">
+        <a class="btn" href="#contactos">Agendar serviço</a>
+        <a class="btn dark" href="#servicos">Ver serviços</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicos">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">O que fazemos</div>
+        <h2>Serviços automóveis</h2>
+        <p class="intro">Soluções para manutenção, diagnóstico e segurança do seu veículo.</p>
+      </div>
+
+      <div class="services">
+        <article class="card">
+          <div class="icon">01</div>
+          <h3>Mudança de óleos e filtros</h3>
+          <p>Manutenção essencial para manter o motor protegido e a funcionar corretamente.</p>
+        </article>
+        <article class="card">
+          <div class="icon">02</div>
+          <h3>Correias e correntes de distribuição</h3>
+          <p>Verificação, manutenção e substituição dos componentes de distribuição.</p>
+        </article>
+        <article class="card">
+          <div class="icon">03</div>
+          <h3>Diagnóstico e resolução de avarias</h3>
+          <p>Identificação de problemas e procura da solução adequada para o veículo.</p>
+        </article>
+        <article class="card">
+          <div class="icon">04</div>
+          <h3>Suspensão</h3>
+          <p>Verificação e intervenção nos componentes da suspensão.</p>
+        </article>
+        <article class="card">
+          <div class="icon">05</div>
+          <h3>Travagem</h3>
+          <p>Manutenção e substituição de componentes do sistema de travagem.</p>
+        </article>
+        <article class="card">
+          <div class="icon">06</div>
+          <h3>Limpeza e estética automotiva</h3>
+          <p>Cuidado exterior e interior para devolver ao seu veículo uma aparência impecável.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="detailing">
+    <div class="container">
+      <div class="detailing">
+        <div>
+          <div class="eyebrow">Também fazemos</div>
+          <h2>DESCAR Detailing</h2>
+          <p>
+            Da mecânica à estética: lavagem, limpeza interior, tratamento e cuidado
+            profissional do veículo. Em breve, veja aqui todos os serviços de Detailing.
+          </p>
+        </div>
+        <a class="btn" href="#detailing">Ver Detailing</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <div class="container about">
+      <div class="about-box">
+        <strong>DC</strong>
+      </div>
+      <div>
+        <div class="eyebrow">DESCAR</div>
+        <h2>Mais do que uma oficina.</h2>
+        <p class="intro">
+          Um espaço dedicado à manutenção, segurança e cuidado do seu automóvel.
+          Esta área será personalizada com a história da DESCAR e a apresentação da oficina.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contactos">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Fale connosco</div>
+        <h2>Contactos</h2>
+        <p class="intro">Adicionaremos aqui o telefone, WhatsApp, morada, horário e Instagram.</p>
+      </div>
+      <div class="contact">
+        <div class="contact-card">
+          <h3>📍 Morada</h3>
+          <p>A adicionar</p>
+        </div>
+        <div class="contact-card">
+          <h3>📞 Telefone / WhatsApp</h3>
+          <p>A adicionar</p>
+        </div>
+        <div class="contact-card">
+          <h3>🕒 Horário</h3>
+          <p>A adicionar</p>
+        </div>
+        <div class="contact-card">
+          <h3>📱 Instagram</h3>
+          <p>A adicionar</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">© 2026 DESCAR — Oficina Automóvel. Todos os direitos reservados.</div>
+</footer>
+
+</body>
+</html>
